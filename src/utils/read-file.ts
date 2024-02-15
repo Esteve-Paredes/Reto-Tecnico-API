@@ -7,7 +7,7 @@ export function readFile(path: string | undefined) {
     const csvContent = parse(fileContent, {
       columns: true,
       cast: (value, context) => {
-        if (context.column === "Age") return Number(value);
+        if (context.column === "age") return Number(value);
         return value;
       },
     });

@@ -1,15 +1,9 @@
 import { z } from "zod";
 
-export const usersSchema = z.object({
-  Name: z.string({
-    invalid_type_error: "El campo 'name' no puede estar vacío.",
-  }),
-  Email: z.string({
-    invalid_type_error: "El formato del campo 'email' es inválido.",
-  }),
-  Age: z.number({
-    invalid_type_error: "El campo 'age' debe ser un número positivo.",
-  }),
+export const UsersSchema = z.object({
+  name: z.string().min(1, "El nombre no puede estar vacío."),
+  email: z.string().email("El email no es válido."),
+  age: z.number().min(0, "La edad no puede ser un número negativo."),
 });
 
-export type User = z.infer<typeof usersSchema>;
+export type User = z.infer<typeof UsersSchema>;
