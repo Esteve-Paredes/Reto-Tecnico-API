@@ -3,28 +3,28 @@ import * as userDB from "../data/auth-data";
 import { User, userParams } from "../models/user";
 import { ApiError } from "../middleware/error";
 
-export async function createUser(userData: userParams): Promise<User> {
-  const { username, password } = userData;
+/* export async function createUser(userData: userParams): Promise<User> {
+  const { email, password } = userData;
 
-  const user = await userDB.getUserByuserName(username);
+  const user = await userDB.getUserByuserName(email);
   if (user) {
     throw new ApiError("El username ya está registrado", 400);
   }
 
   const costFactor = 4;
   const hashedPassword = await bcrypt.hash(password, costFactor);
-  return await userDB.createUser(username, hashedPassword);
-}
+  return await userDB.createUser(email, hashedPassword);
+} */
 
 export async function validateCredentials(userData: userParams): Promise<User> {
-  const { username, password } = userData;
-  const user = await userDB.getUserByuserName(username);
+  const { email, password } = userData;
+  const user = await userDB.getUserByEmail(email);
 
-  const isValid = await bcrypt.compare(password, user?.password || "");
+  /*  const isValid = await bcrypt.compare(password, user?.password || "");
 
   if (!user || !isValid) {
     throw new ApiError("Credenciales incorrectas", 400);
-  }
+  } */
 
   return user;
 }

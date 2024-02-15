@@ -1,10 +1,7 @@
 import { z } from "zod";
 
 export const userSchema = z.object({
-  username: z.string({
-    required_error: "username es requerido",
-    invalid_type_error: "Username debe ser un string",
-  }),
+  email: z.string().email("El email no es válido."),
   password: z
     .string({
       required_error: "Password es requerido",
@@ -14,4 +11,4 @@ export const userSchema = z.object({
 });
 
 export type userParams = z.infer<typeof userSchema>;
-export type User = userParams & { id: number };
+export type User = userParams & { id: number; role: string };

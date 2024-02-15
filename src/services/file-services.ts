@@ -16,6 +16,9 @@ export async function postData(usersData: User[]) {
       if (error instanceof z.ZodError) {
         let newData: { [key: string]: string | number } = {
           row: i + 1,
+          name: user.name,
+          email: user.email,
+          age: user.age,
         };
         for (const subError of error.errors) {
           newData[subError.path[0]] = subError.message;

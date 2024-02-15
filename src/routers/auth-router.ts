@@ -1,13 +1,13 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { createUser, validateCredentials } from "../services/auth.services";
+import { validateCredentials } from "../services/auth.services";
 import { validationHandler } from "../middleware/validation";
 import { userSchema } from "../models/user";
 
 const authRouter = express.Router();
 const jwtSecret = "ultra-secret";
 
-authRouter.post(
+/* uthRouter.post(
   "/signup",
   validationHandler(userSchema),
   async (req, res, next) => {
@@ -28,18 +28,20 @@ authRouter.post(
       next(error);
     }
   }
-);
+); */
 
 authRouter.post("/login", async (req, res, next) => {
   try {
     const user = await validateCredentials(req.body);
-    const payload = { userId: user.id, userName: user.username };
+    console.log(user);
+    const payload = { userId: user.id, email: user.email };
     const token = jwt.sign(payload, jwtSecret, { expiresIn: "40m" });
     res.status(201).json({
       ok: true,
       data: {
         id: user.id,
-        username: user.username,
+        email: user.email,
+        rol: user.role,
         token: token,
       },
     });
