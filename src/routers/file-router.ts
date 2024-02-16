@@ -3,7 +3,6 @@ import multer from "multer";
 import { saveFile } from "../utils/save-files";
 import { readFile } from "../utils/read-file";
 import { postData, postDataFixed } from "../services/file-services";
-import { authenticateHandler } from "../middleware/authenticate";
 
 const fileRouter = express.Router();
 
