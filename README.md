@@ -4,23 +4,23 @@
 
 Esta API permite la carga, lectura y almacenamiento de archivos CSV utilizando las bibliotecas Multer y CSV-Parse. También incluye funcionalidades de migración de datos con Umzug.
 
-## Instalación
+# Instalación
 
-# Clonar el repositorio
+## Clonar el repositorio
 
 git clone https://github.com/Esteve-Paredes/Reto-Tecnico-API
 
-# Cambiar al directorio del repositorio
+## Cambiar al directorio del repositorio
 
 cd Reto-Tecnico-API
 
-# Instalar todas las dependencias
+## Instalar todas las dependencias
 
 npm install
 
 ---
 
-## Configurar archivo .env
+# Configurar archivo .env
 
 hacer una copia del archivo .env.example y completar con los datos siguientes:
 
@@ -33,9 +33,9 @@ PGADMINDATABASE=[nombre-de-db-administrativa]
 
 ---
 
-## Migración
+# Migración
 
-# Scripts de Migración
+## Scripts de Migración
 
 En este proyecto, se han definido varios scripts para manejar las migraciones de la base de datos. Aquí te dejo una descripción de lo que hace cada uno:
 
@@ -52,7 +52,7 @@ npm run db:migrate
 
 ```
 
-# 5 comando de db:migrate
+## 5 comando de db:migrate
 
 - `up`: Aplica migraciones pendientes (función `up` del archivo de migración)
 - `down`: Revierte migraciones (función `down` del archivo de migración)
@@ -60,7 +60,7 @@ npm run db:migrate
 - `executed`: Lista migraciones ejecutadas
 - `create`: Crea una archivo de migración (usando la plantilla indicada en la configuración)
 
-# Crear una Migracion
+## Crear una Migracion
 
 Si queremos crear una nueva migracion podemos ejecutar el siguiente comando:
 
